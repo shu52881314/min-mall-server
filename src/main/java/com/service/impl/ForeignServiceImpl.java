@@ -9,6 +9,7 @@ import com.util.MapData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 @Service
 public class ForeignServiceImpl implements ForeignService {
@@ -22,5 +23,10 @@ public class ForeignServiceImpl implements ForeignService {
         Page<Map> page = new Page<>(pageNo,pageSize);
         this.foreignDao.getCommodityList(page,map);
         return MapData.of(page.getRecords());
+    }
+
+    @Override
+    public Map getCarouselList(Map map) {
+        return MapData.of(this.foreignDao.getCarouselList(map));
     }
 }
