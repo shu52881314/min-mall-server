@@ -21,12 +21,17 @@ public class ForeignServiceImpl implements ForeignService {
         Long pageNo=Long.parseLong(map.get("pageNo").toString());
         Long pageSize=Long.parseLong(map.get("pageSize").toString());
         Page<Map> page = new Page<>(pageNo,pageSize);
-        this.foreignDao.getCommodityList(page,map);
-        return MapData.of(page.getRecords());
+        IPage<Map> iPage=this.foreignDao.getCommodityList(page,map);
+        return MapData.of(iPage.getRecords());
     }
 
     @Override
     public Map getCarouselList(Map map) {
         return MapData.of(this.foreignDao.getCarouselList(map));
+    }
+
+    @Override
+    public Map getCateList(Map map) {
+        return MapData.of(this.foreignDao.getCateList(map));
     }
 }

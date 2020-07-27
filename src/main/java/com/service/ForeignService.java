@@ -10,4 +10,6 @@ public interface ForeignService {
     Map getCommodityList(Map map);
 
     Map getCarouselList(Map map);
+
+    Map getCateList(Map map);
 }
